@@ -6,7 +6,7 @@ class LoadDataJob < ApplicationJob
   def perform
     AIRPORT_CODES.each do |from|
       AIRPORT_CODES.each do |to|
-        LoadRouteJob.set(wait: 1.minutes).perform_later(from, to)
+        LoadRouteJob.perform_later(from, to)
       end
     end
   end

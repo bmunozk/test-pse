@@ -1,6 +1,6 @@
 :schedule:
   load_data:
-    cron: '0 0 * * *'   # Runs once per hour # only 5 things here, it shouldnt be 6
+    cron: '0 0 * * * *'
     class: LoadDataJob
   build_cheap_route:
     cron: '15 5-22/4 * * *' # At minute 15 past every 4th hour from 5 through 22.
