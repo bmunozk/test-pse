@@ -6,6 +6,7 @@ class RouteOption < ApplicationRecord
   scope :destination, ->(loc) { where(to: loc) }
   scope :cheaper, -> { order(price: :asc) }
   scope :earliest_departure, -> { order(departs_at: :asc) }
+  scope :airline, ->(airl) {where(airline_ref: airl)} 
 
   def payload
     Oj.load raw_payload

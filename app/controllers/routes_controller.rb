@@ -8,12 +8,17 @@ class RoutesController < ApplicationController
   end
 
   def show
-    routes = @routes.where(**route_params.to_h)
-    render json: { data: routes.map(&:to_jsonapi) }
+    routes = @routes.distinct.where(**route_params.to_h).order(price: :asc) #Ordering from lowest to highest
+    data = routes.map(&:to_jsonapi)
+    if route_params.to_h.length == 1 || data.length == 0 
+      render json: { data: data } 
+    else 
+      render json: { data: data.first } 
+    end
   end
 
   def route_params
-    params.permit(:from, :to)
+    params.permit(:from, :to, :airline) #adding the filter per airline
   end
 
   def set_routes

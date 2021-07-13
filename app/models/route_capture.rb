@@ -13,7 +13,7 @@ class RouteCapture < ApplicationRecord
       transitions from: :created, to: :scheduled
     end
     event :process_start do
-      transitions from: :created, to: :processing
+      transitions from: :scheduled, to: :processing # It should be scheduled to processing not created to processing
     end
 
     event :process_complete do
@@ -22,7 +22,7 @@ class RouteCapture < ApplicationRecord
   end
 
   def payload
-    Oj.load(raw_payload).deep_transform_keys { |k| k.underscore.to_sym }
+    Oj.load(raw_payload).deep_transform_keys { |k| k.underscore.to_sym } #Keys are changed to snake case
   end
 
   def schedule_processing

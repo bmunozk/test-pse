@@ -25,7 +25,7 @@ module UseCases
 
     def run
       request = Net::HTTP::Get.new(@url)
-      request['x-rapidapi-key'] = RAPIDAPI_KEY
+      request['x-rapidapi-key'] = 'bd5f9db2abmsh2a2242bbb021c96p1729ddjsn5856cc35375e'
       request['x-rapidapi-host'] = 'skyscanner-skyscanner-flight-search-v1.p.rapidapi.com'
 
       response = @http.request(request)

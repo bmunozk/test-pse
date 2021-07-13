@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: pse_test_production
-  username: pse_test
-  password: <%= ENV['PSE_TEST_DATABASE_PASSWORD'] %>
+  username: bmunoz
+  password: '12345678'
